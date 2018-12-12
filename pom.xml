@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ldf.architect</groupId>
+    <artifactId>architect-awesome</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>data-structure</module>
+        <module>arithmetic</module>
+        <module>concurrent</module>
+        <module>operating-system</module>
+        <module>design-patterns</module>
+        <module>oam-s-ts</module>
+        <module>middleware</module>
+        <module>network</module>
+        <module>database</module>
+        <module>search-engine</module>
+        <module>performance</module>
+        <module>bigdata</module>
+        <module>security</module>
+        <module>open-source-framework</module>
+        <module>distributed</module>
+        <module>designthinking-developmentmodel</module>
+        <module>project-management</module>
+    </modules>
+
+
+</project>
