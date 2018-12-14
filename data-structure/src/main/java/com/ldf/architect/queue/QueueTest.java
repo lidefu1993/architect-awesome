@@ -2,7 +2,6 @@ package com.ldf.architect.queue;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * @author lidefu
@@ -11,6 +10,7 @@ import java.util.Queue;
 public class QueueTest {
 
     public static void main(String[] args) {
+        System.out.println("size:" + (3>>>1));
         priorityQueueTest();
     }
 
@@ -28,6 +28,9 @@ public class QueueTest {
             }
         });
         queue.add(1);
+        queue.add(5);
+        queue.add(6);
+        queue.add(4);
         queue.add(2);
         queue.add(3);
         System.out.println(queue.size());
