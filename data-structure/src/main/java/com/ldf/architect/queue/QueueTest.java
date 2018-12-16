@@ -1,9 +1,12 @@
 package com.ldf.architect.queue;
 
+import java.util.ArrayDeque;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.PriorityQueue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
@@ -13,7 +16,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 public class QueueTest {
 
     public static void main(String[] args) throws InterruptedException {
-        blockingPriorityQueue();
+        dequeTest();
     }
 
     /**
@@ -47,13 +50,52 @@ public class QueueTest {
 
     /**
      * 阻塞队列
-     * 从队列中取元素的时候，若队列为空，阻塞线程
-     * 往队列中添加元素的时候，若队列已满，阻塞线程
+     * 取元素时，若队列为空，阻塞线程等待通知
+     * 添加元素时，通知因为队列为空阻塞的线程；若丢列满了，阻塞或者抛出异常
+     */
+
+    /**
+     * 优先级阻塞队列
      */
     private static void blockingPriorityQueue() throws InterruptedException {
-        BlockingQueue queue = new ArrayBlockingQueue(2);
-        Object o = queue.take();
-        System.out.println("queue take:" + o);
+        BlockingQueue<String> queue = new PriorityBlockingQueue<String>(1);
+        queue.add("3");
+        queue.add("2");
+        String take = queue.take();
+        System.out.println("queue take:" + take);
+    }
+
+    /**
+     * 基于数组的阻塞队列
+     */
+    private static void arrayBlockingQueue() throws InterruptedException {
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(1);
+        queue.add(1);
+        queue.offer(1);
+        queue.take();
+        queue.poll();
+    }
+
+    /**
+     * 基于链表的阻塞队列
+     */
+    private static void linkedBlockingQueue() throws InterruptedException {
+        BlockingQueue<Integer> queue = new LinkedBlockingDeque<Integer>(1);
+        queue.add(1);
+        queue.take();
+    }
+
+    /**
+     * 双向队列测试
+     */
+    private static void dequeTest(){
+        Deque<Integer> deque = new ArrayDeque<Integer>();
+        deque.add(1);
+        deque.addFirst(2);
+        deque.addLast(3);
+        Integer first = deque.getFirst();
+        Integer last = deque.getLast();
+        System.out.println("first:" + first + " last:" + last);
     }
 
 }
