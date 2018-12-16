@@ -2,6 +2,9 @@ package com.ldf.architect.queue;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * @author lidefu
@@ -9,9 +12,8 @@ import java.util.PriorityQueue;
  */
 public class QueueTest {
 
-    public static void main(String[] args) {
-        System.out.println("size:" + (3>>>1));
-        priorityQueueTest();
+    public static void main(String[] args) throws InterruptedException {
+        blockingPriorityQueue();
     }
 
     /**
@@ -41,6 +43,17 @@ public class QueueTest {
                 break;
             }
         }
+    }
+
+    /**
+     * 阻塞队列
+     * 从队列中取元素的时候，若队列为空，阻塞线程
+     * 往队列中添加元素的时候，若队列已满，阻塞线程
+     */
+    private static void blockingPriorityQueue() throws InterruptedException {
+        BlockingQueue queue = new ArrayBlockingQueue(2);
+        Object o = queue.take();
+        System.out.println("queue take:" + o);
     }
 
 }
