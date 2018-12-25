@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 import javax.sound.midi.Soundbank;
 import java.awt.event.ItemEvent;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author lidefu
@@ -71,6 +68,14 @@ public class ListTest {
         list.subList(0, 2);
         list.remove(0);
         list.remove(1);
+    }
+
+    /**
+     * Vector基于数据的线程安全的集合
+     */
+    private static void vectorTest(){
+        List<Integer> vector = new Vector<>();
+        vector.add(1);
     }
 
 }

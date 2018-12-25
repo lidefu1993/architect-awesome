@@ -12,9 +12,9 @@ public class CollectTest {
     /**
      *
      * 集合用于存储数量不等的对象
-     * 大致分为Set、List、Queue、Map四种体系
-     * Set:无序不可重复的集合
+     * 大致分为List、Set、Map、Queue四种体系
      * List:有序可重复的集合
+     * Set:无序不可重复的集合
      * Map:具有映射关系的集合
      * Queue此处不涉及
      */

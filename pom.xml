@@ -26,6 +26,7 @@
         <module>distributed</module>
         <module>designthinking-developmentmodel</module>
         <module>project-management</module>
+        <module>base</module>
     </modules>
 
     <dependencies>
