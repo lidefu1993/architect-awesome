@@ -8,7 +8,19 @@ public class BitOperation {
 
 
     public static void main(String[] args) {
-        System.out.println(~-3);
+        moldTest(3,5);
+    }
+
+    /**
+     * 取模测试
+     * x对y取模
+     * @param x
+     * @param y y必须为2的n次方
+     */
+    private static void moldTest(int x, int y){
+        int m1 = x % y;
+        int m2 = x & (y-1);
+        System.out.println("m1=" + m1 + ", m2=" + m2 + ", m1==m2=" + (m1==m2) );
     }
 
     private static void test1(){
