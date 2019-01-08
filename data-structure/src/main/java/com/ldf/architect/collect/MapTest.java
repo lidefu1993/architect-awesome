@@ -10,13 +10,7 @@ public class MapTest {
      * Map
      */
     public static void main(String[] args) {
-        int i = 2;
-        int j = 3;
-        System.out.println("i:" + i + " j:" + j);
-        i ^= j;
-        j ^= i;
-        i ^= j;
-        System.out.println("i:" + i + " j:" + j);
+        TestBean testBean = new TestBean();
         hashMap();
     }
 
@@ -27,7 +21,9 @@ public class MapTest {
         int n = 1;
         HashMap<String, String> map = new HashMap<>(n);
         map.put("name", "李德富");
+        map.put("sex", "男");
         map.put("age", "25");
+        map.get("age");
         System.out.println(1);
     }
     
