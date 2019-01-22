@@ -1,10 +1,5 @@
 package com.ldf.arithmetic.leetcode;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  *  无重复字符的最长子串
@@ -31,14 +26,99 @@ public class LongestSubstringWithoutRepeatingChar {
      */
 
     public static void main(String[] args) {
-//        List<String> ss = new ArrayList<>();
-//        ss.add("a"); ss.add("b"); ss.add("c");
-//        ss.subList(0, 1);
         LongestSubstringWithoutRepeatingChar repeatingChar = new LongestSubstringWithoutRepeatingChar();
-        System.out.println(repeatingChar.lengthOfLongestSubstringMy("aabaab!bb"));
+        System.out.println(repeatingChar.lengthOfLongestSubstring("abcabcbb"));
+    }
+
+    /**
+     * 优化的滑动窗口
+     * 使用hashMap做滑动窗口
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring(String s){
+        int max = 0;
+        Map<Character, Integer> map = new HashMap<>(s.length());
+        for(int i = 0, j = 0; j < s.length(); j++){
+            if(map.containsKey(s.charAt(j))){
+                i = Math.max(i, map.get(s.charAt(j)));
+            }
+            max = Math.max(max, j-i+1);
+            map.put(s.charAt(j), j+1);
+        }
+        return max;
+    }
+
+    /**
+     * 使用set作为一个滑动窗口
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring2(String s){
+        int i = 0, j = 0, max = 0;
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        while (i < n && j < n){
+            if(set.contains(s.charAt(j))){
+                set.remove(s.charAt(i++));
+            }else {
+                set.add(s.charAt(j++));
+                max = Math.max(max, j - i);
+            }
+        }
+        return max;
     }
 
 
+    /**
+     * 官方解答1：暴力法
+     * 逐个检查子字符串，看是不是有重复的字符。不重复的记录长度
+     * 所有的子字符串：开始索引i 结束索引j i和j的全部组合即为全部子字符串
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring1(String s){
+        if(s == null || s.isEmpty()){
+            return 0;
+        }
+        if(s.length() == 1){
+            return 1;
+        }
+        int max = 0;
+        for(int i = 0; i < s.length(); i++){
+            for (int j = i+1; j <= s.length(); j++){
+                if(allUnique(s, i, j)){
+                    max = Math.max(max, j-i);
+                }
+            }
+        }
+        return max;
+    }
+
+    /**
+     * 是否没有重复
+     * @param s
+     * @param begin
+     * @param end
+     * @return true:没有重复 false:存在重复
+     */
+    private boolean allUnique(String s, int begin, int end){
+        String s1 = s.substring(begin, end);
+        for (int i = 0; i < s1.length(); i++){
+            int index = s1.indexOf(s1.charAt(i));
+            if(index != i){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    /**
+     * 自己的解答
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstringMy(String s){
         int max = 1;
         if(s == null || s.isEmpty()){
