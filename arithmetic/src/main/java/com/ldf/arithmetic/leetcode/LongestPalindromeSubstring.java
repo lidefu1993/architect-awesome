@@ -25,13 +25,41 @@ public class LongestPalindromeSubstring {
         String str = "kyyrjtdplseovzwjkykrjwhxquwxsfsorjiumvxjhjmgeueafubtonhlerrgsgohfosqssmizcuqryqomsipovhhodpfyudtusjhonlqabhxfahfcjqxyckycstcqwxvicwkjeuboerkmjshfgiglceycmycadpnvoeaurqatesivajoqdilynbcihnidbizwkuaoegmytopzdmvvoewvhebqzskseeubnretjgnmyjwwgcooytfojeuzcuyhsznbcaiqpwcyusyyywqmmvqzvvceylnuwcbxybhqpvjumzomnabrjgcfaabqmiotlfojnyuolostmtacbwmwlqdfkbfikusuqtupdwdrjwqmuudbcvtpieiwteqbeyfyqejglmxofdjksqmzeugwvuniaxdrunyunnqpbnfbgqemvamaxuhjbyzqmhalrprhnindrkbopwbwsjeqrmyqipnqvjqzpjalqyfvaavyhytetllzupxjwozdfpmjhjlrnitnjgapzrakcqahaqetwllaaiadalmxgvpawqpgecojxfvcgxsbrldktufdrogkogbltcezflyctklpqrjymqzyzmtlssnavzcquytcskcnjzzrytsvawkavzboncxlhqfiofuohehaygxidxsofhmhzygklliovnwqbwwiiyarxtoihvjkdrzqsnmhdtdlpckuayhtfyirnhkrhbrwkdymjrjklonyggqnxhfvtkqxoicakzsxmgczpwhpkzcntkcwhkdkxvfnjbvjjoumczjyvdgkfukfuldolqnauvoyhoheoqvpwoisniv";
 //        String str = "abss";
         long begin = System.currentTimeMillis();
-        System.out.println(substring.longestPalindrome(str));
+        System.out.println(substring.longestPalindromeFlip(str));
         System.out.println((System.currentTimeMillis() - begin)/1000.0);
     }
 
+    /**
+     * 翻转 求相同子串（时间超出）
+     * @param s
+     * @return
+     */
+    public String longestPalindromeFlip(String s){
+        List<String> list = new ArrayList<>(Arrays.asList(s.split("")));
+        List<String> flipList = new ArrayList<>(list);
+        Collections.reverse(flipList);
+        int max = 0;
+        String result = "";
+        for(int i= 0; i < list.size(); i++){
+            for(int j = i; j < list.size(); j++){
+                if(j-i+1 >= max){
+                    String s1 = listIsSame(list.subList(i, j+1), flipList.subList(list.size() - 1 - j, list.size() - i));
+                    if(s1 != null){
+                        max = j-i+1;
+                        result = s1;
+                    }
+                }
+            }
+        }
+        return result;
+    }
 
-
-    public String longestPalindrome(String s) {
+    /**
+     * 暴力法 获取所有子串，判断字符串是否为回文子串
+     * @param s
+     * @return
+     */
+    public String longestPalindromeViolence(String s) {
         if(s == null || s.isEmpty()){
             return "";
         }
@@ -63,7 +91,14 @@ public class LongestPalindromeSubstring {
         return result;
     }
 
-    public boolean palindrome(String[] ss, int lowIndex, int highIndex){
+    /**
+     * 判断集合ss在低位索引lowIndex到高位索引highIndex之间是否构成回文
+     * @param ss
+     * @param lowIndex
+     * @param highIndex
+     * @return
+     */
+    private boolean palindrome(String[] ss, int lowIndex, int highIndex){
         if(lowIndex == highIndex){
             return true;
         }
@@ -74,6 +109,20 @@ public class LongestPalindromeSubstring {
             }
         }
         return true;
+    }
+
+
+    private String listIsSame(List<String> list1, List<String> list2){
+        String s1 = mergeString(list1);
+        String s2 = mergeString(list2);
+        return s1.equals(s2) ? s1 : null;
+    }
+
+
+    private String mergeString(List<String> list){
+        StringBuilder s = new StringBuilder("");
+        list.forEach(s::append);
+        return s.toString();
     }
 
 }

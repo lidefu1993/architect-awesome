@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import javax.sound.midi.Soundbank;
 import java.awt.event.ItemEvent;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author lidefu
@@ -20,7 +21,15 @@ public class ListTest {
      */
 
     public static void main(String[] args) {
-        linkedList();
+        remainAll();
+    }
+
+    private static void remainAll(){
+        String s = "abss";
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(s.split("")));
+        System.out.println(list);
+        System.out.println(list.subList(2, 4));
+        System.out.println();
     }
 
     /**
@@ -77,5 +86,6 @@ public class ListTest {
         List<Integer> vector = new Vector<>();
         vector.add(1);
     }
+
 
 }
