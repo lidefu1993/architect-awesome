@@ -22,11 +22,45 @@ public class LongestPalindromeSubstring {
 
     public static void main(String[] args) {
         LongestPalindromeSubstring substring = new LongestPalindromeSubstring();
-        String str = "kyyrjtdplseovzwjkykrjwhxquwxsfsorjiumvxjhjmgeueafubtonhlerrgsgohfosqssmizcuqryqomsipovhhodpfyudtusjhonlqabhxfahfcjqxyckycstcqwxvicwkjeuboerkmjshfgiglceycmycadpnvoeaurqatesivajoqdilynbcihnidbizwkuaoegmytopzdmvvoewvhebqzskseeubnretjgnmyjwwgcooytfojeuzcuyhsznbcaiqpwcyusyyywqmmvqzvvceylnuwcbxybhqpvjumzomnabrjgcfaabqmiotlfojnyuolostmtacbwmwlqdfkbfikusuqtupdwdrjwqmuudbcvtpieiwteqbeyfyqejglmxofdjksqmzeugwvuniaxdrunyunnqpbnfbgqemvamaxuhjbyzqmhalrprhnindrkbopwbwsjeqrmyqipnqvjqzpjalqyfvaavyhytetllzupxjwozdfpmjhjlrnitnjgapzrakcqahaqetwllaaiadalmxgvpawqpgecojxfvcgxsbrldktufdrogkogbltcezflyctklpqrjymqzyzmtlssnavzcquytcskcnjzzrytsvawkavzboncxlhqfiofuohehaygxidxsofhmhzygklliovnwqbwwiiyarxtoihvjkdrzqsnmhdtdlpckuayhtfyirnhkrhbrwkdymjrjklonyggqnxhfvtkqxoicakzsxmgczpwhpkzcntkcwhkdkxvfnjbvjjoumczjyvdgkfukfuldolqnauvoyhoheoqvpwoisniv";
-//        String str = "abss";
+//        String str = "kyyrjtdplseovzwjkykrjwhxquwxsfsorjiumvxjhjmgeueafubtonhlerrgsgohfosqssmizcuqryqomsipovhhodpfyudtusjhonlqabhxfahfcjqxyckycstcqwxvicwkjeuboerkmjshfgiglceycmycadpnvoeaurqatesivajoqdilynbcihnidbizwkuaoegmytopzdmvvoewvhebqzskseeubnretjgnmyjwwgcooytfojeuzcuyhsznbcaiqpwcyusyyywqmmvqzvvceylnuwcbxybhqpvjumzomnabrjgcfaabqmiotlfojnyuolostmtacbwmwlqdfkbfikusuqtupdwdrjwqmuudbcvtpieiwteqbeyfyqejglmxofdjksqmzeugwvuniaxdrunyunnqpbnfbgqemvamaxuhjbyzqmhalrprhnindrkbopwbwsjeqrmyqipnqvjqzpjalqyfvaavyhytetllzupxjwozdfpmjhjlrnitnjgapzrakcqahaqetwllaaiadalmxgvpawqpgecojxfvcgxsbrldktufdrogkogbltcezflyctklpqrjymqzyzmtlssnavzcquytcskcnjzzrytsvawkavzboncxlhqfiofuohehaygxidxsofhmhzygklliovnwqbwwiiyarxtoihvjkdrzqsnmhdtdlpckuayhtfyirnhkrhbrwkdymjrjklonyggqnxhfvtkqxoicakzsxmgczpwhpkzcntkcwhkdkxvfnjbvjjoumczjyvdgkfukfuldolqnauvoyhoheoqvpwoisniv";
+        String str = "aba";
         long begin = System.currentTimeMillis();
-        System.out.println(substring.longestPalindromeFlip(str));
+        System.out.println(substring.longestPalindromeViolence(str));
+        System.out.println(substring.longestPalindrome(str));
         System.out.println((System.currentTimeMillis() - begin)/1000.0);
+    }
+
+    /**
+     * 中心扩散 当前字符串为回文字符串则左右两端加上一个同一个字符，该字符串依然为回文字符串
+     * @param s
+     * @return
+     */
+    String longestPalindrome(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+        int n = s.length(), maxLen = 0, start = 0;
+        String[] ss = s.split("");
+        for (int i = 0; i < n - 1; ++i) {
+            int[] l1 = searchPalindrome(ss, i, i);
+            if(l1[0] >= maxLen){
+                maxLen = l1[0];
+                start = l1[1];
+            }
+            int[] l2 = searchPalindrome(ss, i, i + 1);
+            if(l2[0] >= maxLen){
+                maxLen = l2[0];
+                start = l2[1];
+            }
+        }
+        return s.substring(start, start + maxLen);
+    }
+
+    int[] searchPalindrome(String[] s, int left, int right) {
+        while (left >= 0 && right < s.length && s[left].equals(s[right])) {
+            --left; ++right;
+        }
+        return new int[]{right - left - 1, left+1};
     }
 
     /**
