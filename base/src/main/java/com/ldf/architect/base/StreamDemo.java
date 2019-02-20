@@ -1,7 +1,7 @@
 package com.ldf.architect.base;
 
+import java.io.File;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,6 +21,7 @@ public class StreamDemo {
      */
 
     public static void main(String[] args) {
+        stream();
         foreach();
         filter(1, 2, 3, 4);
         concat();
@@ -38,6 +39,14 @@ public class StreamDemo {
         maxMin();
         reduce();
         mapToInt();
+    }
+
+    public static void stream(){
+//        Stream<Integer> stream = Stream.of(1);
+        Stream<Integer> streamArray = Stream.of(1, 2, 3);
+        Stream<Integer> streamFilter = streamArray.filter(i -> i > 2);
+        List<Integer> list = streamFilter.collect(Collectors.toList());
+        System.out.println(1);
     }
 
     /**
