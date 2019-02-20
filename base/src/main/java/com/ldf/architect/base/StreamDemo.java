@@ -1,9 +1,6 @@
 package com.ldf.architect.base;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,7 +15,7 @@ public class StreamDemo {
      * stream不是数据结构，只是数据源（例如：集合）的视图
      * 常用操作
      * 中间操作：concat() distinct() filter() map() flatMap() limit() sorted() peek()
-     *          skip() parallel() sequential() unordered()
+     *          skip() parallel() sequential() unordered() mapToInt()
      * 结束操作：allMatch() anyMatch() noneMatch() collect() count() findAny() findFirst()
      *         forEach() forEachOrdered() max() min() reduce() toArray()
      */
@@ -39,6 +36,8 @@ public class StreamDemo {
         collect();
         find();
         maxMin();
+        reduce();
+        mapToInt();
     }
 
     /**
@@ -229,8 +228,51 @@ public class StreamDemo {
      */
     public static void reduce(){
         System.out.println("-----------------reduce-----------------");
-
+        Stream<Integer> stream1 = Stream.of(1, 2, 3, 4);
+        /**
+         * a 第一次是为第一个元素 之后为每次的返回值 b下一个元素
+         */
+        Integer integer1 = stream1.reduce((a, b) -> {
+            System.out.println("a:" + a);
+            System.out.println("b:" + b);
+            System.out.println("-------");
+            return a + b;
+        }).orElse(0);
+        System.out.println(integer1);
+        Stream<Integer> stream2 = Stream.of(1, 2, 3, 4);
+        /**
+         * a：第一次为0之后为每次的返回值
+         * b：下一个元素
+         */
+        stream2.reduce(0, (a, b)->{
+            System.out.println("a:" + a);
+            System.out.println("b:" + b);
+            System.out.println("-------");
+            return a+b;
+        });
     }
 
+    public static void mapToInt(){
+        Stream<Integer> stream = Stream.of(1, 2, 3);
+        stream.mapToInt(i->i+10).forEach(System.out::println);
+        User ldf = new User("ldf", 26);
+        User ldy = new User("ldy", 12);
+        Stream<User> users = Stream.of(ldf, ldy);
+        int[] ints = users.mapToInt(User::getAge).toArray();
+        Arrays.stream(ints).forEach(System.out::println);
+    }
+
+    static class User{
+        private String name;
+        private int age;
+        public User(String name, int age){
+            this.name = name;
+            this.age = age;
+        }
+
+        public int getAge() {
+            return age;
+        }
+    }
 
 }
