@@ -2,15 +2,24 @@ package com.ldf.architect.concurrent.demo;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author lidefu
  * @date 2019/2/19 9:14
  */
 public class WarehouseTest {
-
+    static ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
     public static void main(String[] args) throws InterruptedException {
-        lockTest();
+
+        if(lock.writeLock().tryLock()){
+            lock.writeLock().tryLock();
+        }
+        System.out.println();
+    }
+
+    private static void test(){
+        lock.writeLock().tryLock();
     }
 
     private static void lockTest(){

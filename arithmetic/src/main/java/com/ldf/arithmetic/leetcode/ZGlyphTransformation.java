@@ -1,5 +1,8 @@
 package com.ldf.arithmetic.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Z字形变换
  * @author lidefu
@@ -29,5 +32,39 @@ public class ZGlyphTransformation {
      T     S     G
      */
 
+    /**
+     * 竖过来是z型
+     */
+
+    public static void main(String[] args) {
+        ZGlyphTransformation zGlyphTransformation = new ZGlyphTransformation();
+        String s = zGlyphTransformation.convert("LEETCODEISHIRING", 4);
+        System.out.println(s);
+    }
+
+    public String convert(String s, int numRows) {
+        if(numRows == 1){
+            return s;
+        }
+        int rowNums = Math.min(s.length(), numRows);
+        List<StringBuilder> rows = new ArrayList<>(rowNums);
+        for(int i = 0; i < rowNums; i++){
+            rows.add(new StringBuilder());
+        }
+        int i = 0;
+        boolean b = false;
+        for(char c : s.toCharArray()){
+            if(i == 0 || i == rowNums-1){
+                b = !b;
+            }
+            rows.get(i).append(c);
+            i += b ? 1 : -1;
+        }
+        StringBuilder r = new StringBuilder();
+        for (StringBuilder row : rows){
+            r.append(row);
+        }
+        return r.toString();
+    }
 
 }
