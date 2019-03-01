@@ -1,6 +1,5 @@
 package com.ldf.arithmetic.leetcode;
 
-import java.math.BigInteger;
 import java.util.Stack;
 
 /**
@@ -27,7 +26,23 @@ public class IntegerInversion {
 
     public static void main(String[] args) {
         IntegerInversion inversion = new IntegerInversion();
-        System.out.println(inversion.reverse2(-214748364));
+        System.out.println(inversion.reverseOfficial(-474836));
+    }
+
+    public int reverseOfficial(int x){
+        int rex = 0;
+        while (x != 0){
+            int pop = x%10;
+            x/=10;
+            if((rex > Integer.MAX_VALUE/10) || (rex == Integer.MAX_VALUE/10 && pop > 7) ) {
+                return 0;
+            }
+            if((rex < Integer.MIN_VALUE/10) || (rex == Integer.MIN_VALUE && pop < -8)) {
+                return 0;
+            }
+            rex = rex*10 + pop;
+        }
+        return rex;
     }
 
     /**
