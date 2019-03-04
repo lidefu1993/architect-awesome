@@ -42,17 +42,16 @@ public class StringConversionInteger {
 
     public static void main(String[] args) {
         StringConversionInteger integer = new StringConversionInteger();
-        System.out.println(integer.myAtoi(" s -11aa"));
+        System.out.println(integer.myAtoi(" -11aa"));
     }
 
     public int myAtoi(String str) {
-        long res = 0, temp = 0;
-        String[] ss = str.trim().split("");
+        long res = 0, temp = 0, i = 0;
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i<ss.length; i++){
-            sb.append(ss[i]);
+        for(char c : str.trim().toCharArray()){
+            sb.append(c);
             if(i == 0){
-                if("-".equals(ss[0]) || "+".equals(ss[0])){
+                if('-' == c || '+'==c){
                     continue;
                 }
             }
@@ -62,6 +61,7 @@ public class StringConversionInteger {
             }catch (NumberFormatException e){
                 break;
             }
+            i++;
         }
         if(res >= Integer.MAX_VALUE){
             return Integer.MAX_VALUE;
