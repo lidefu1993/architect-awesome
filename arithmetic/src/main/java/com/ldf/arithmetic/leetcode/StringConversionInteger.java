@@ -1,5 +1,7 @@
 package com.ldf.arithmetic.leetcode;
 
+import java.util.TreeSet;
+
 /**
  *  字符串转换整数（atoi）
  * @author lidefu
@@ -42,7 +44,7 @@ public class StringConversionInteger {
 
     public static void main(String[] args) {
         StringConversionInteger integer = new StringConversionInteger();
-        System.out.println(integer.myAtoi(" -11aa"));
+        System.out.println(integer.myAtoi2(" - 42"));
     }
 
     public int myAtoi(String str) {
@@ -70,6 +72,43 @@ public class StringConversionInteger {
             return Integer.MIN_VALUE;
         }
         return Math.toIntExact(res);
+    }
+
+    /**
+     * 输入：+-2 输出：-2 预期：0
+     * @param str
+     * @return
+     */
+    public int myAtoi2(String str){
+        int res = 0;
+        boolean n = false;
+        for(int i = 0; i<str.length(); i++){
+            if(str.charAt(i) == ' '){
+                continue;
+            }
+            if(str.charAt(i) == '-' && res == 0){
+                n = true;
+                continue;
+            }
+            if(str.charAt(i) == '+' && res == 0){
+                continue;
+            }
+            if(str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                if(res > Integer.MAX_VALUE/10 || (res == Integer.MAX_VALUE) && str.charAt(i) >= '8'){
+                    return Integer.MAX_VALUE;
+                }
+                if(res < Integer.MIN_VALUE/10 || (res == Integer.MIN_VALUE) && str.charAt(i) <= -7 ){
+                    return Integer.MIN_VALUE;
+                }
+            }else {
+                break;
+            }
+            res = Math.abs(res) * 10 + Integer.valueOf(String.valueOf(str.charAt(i)));
+            if(n){
+                res = -res;
+            }
+        }
+        return res;
     }
 
 }
