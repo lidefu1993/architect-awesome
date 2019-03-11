@@ -23,7 +23,7 @@ public class TractsNumber {
      */
 
     public static void main(String[] args) {
-        System.out.println(10%10);
+        System.out.println(String.valueOf(System.currentTimeMillis()).length());
         TractsNumber tractsNumber = new TractsNumber();
         System.out.println(tractsNumber.isPalindrome3(122221));
     }
