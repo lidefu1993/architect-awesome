@@ -19,7 +19,7 @@ public class ContainerWithTheMostWater {
     public static void main(String[] args) {
         ContainerWithTheMostWater water = new ContainerWithTheMostWater();
         int[] height = {1,8,6,2,5,4,8,3,7};
-        System.out.println(water.maxArea(height));
+        System.out.println(water.maxArea1(height));
     }
 
     /**
@@ -37,5 +37,20 @@ public class ContainerWithTheMostWater {
         }
         return res;
     }
+
+    public int maxArea1(int[] height){
+        int res = 0;
+        int i = 0,j = height.length-1;
+        while (i < j){
+            res = Math.max(res, (j-i)*Math.min(height[i], height[j]));
+            if(height[i] > height[j]){
+                j--;
+            }else {
+                i++;
+            }
+        }
+        return res;
+    }
+
 
 }
