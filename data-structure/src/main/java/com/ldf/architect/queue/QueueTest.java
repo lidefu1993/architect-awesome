@@ -4,10 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.PriorityQueue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.*;
 
 /**
  * @author lidefu
@@ -96,6 +93,28 @@ public class QueueTest {
         Integer first = deque.getFirst();
         Integer last = deque.getLast();
         System.out.println("first:" + first + " last:" + last);
+    }
+
+    /**
+     * 延迟队列
+     */
+    private static void delayQueue(){
+        DelayQueue delayQueue = new DelayQueue();
+        DelayedTask task1 = new DelayedTask();
+        delayQueue.add(task1);
+    }
+
+    private static class DelayedTask implements Delayed{
+
+        @Override
+        public long getDelay(TimeUnit unit) {
+            return 0;
+        }
+
+        @Override
+        public int compareTo(Delayed o) {
+            return 0;
+        }
     }
 
 }
