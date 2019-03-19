@@ -44,7 +44,7 @@ public class IntegerToRomanNumeral {
 
     public static void main(String[] args) {
         IntegerToRomanNumeral numeral = new IntegerToRomanNumeral();
-        System.out.println(numeral.intToRoman(1));
+        System.out.println(numeral.intToRoman(500));
     }
 
     public String intToRoman(int num) {
