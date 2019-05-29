@@ -30,6 +30,11 @@ public class SumThreeNumbers {
         System.out.println(numbers.threeSum(nums).toString());
     }
 
+    /**
+     * 确定左边界 移动中间和右边界
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
