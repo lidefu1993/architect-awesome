@@ -1,5 +1,8 @@
 package com.ldf.arithmetic.leetcode;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * 最接近的三数之和
  * @author lidefu
@@ -15,9 +18,13 @@ public class ClosestSumThreeNumbers {
      */
     public static void main(String[] args) {
         ClosestSumThreeNumbers threeNumbers = new ClosestSumThreeNumbers();
-        int[] nums = {-1, 2, 1, -4};
+        int[] nums = {-3,-2,-5,3,-4};
+//        int[] sortedNums = arraySort(nums);
+//        for (int i=0; i<sortedNums.length; i++){
+//            System.out.println(sortedNums[i]);
+//        }
         int target = 1;
-        System.out.println(threeNumbers.threeSumClosest(nums, 1));
+        System.out.println(threeNumbers.threeSumClosest(nums, -1));
     }
 
     /**
@@ -35,27 +42,57 @@ public class ClosestSumThreeNumbers {
      * @return r
      */
     public int threeSumClosest(int[] nums, int target) {
-        int min = Integer.MAX_VALUE;
-        int sum = 0;
+        if(nums.length < 3){
+            return Integer.MAX_VALUE;
+        }
+        int min = nums[0] + nums[1] + nums[2];
+        Arrays.sort(nums);
         for(int left = 0; left < nums.length-1; left++){
-            int tempMin = Integer.MAX_VALUE;
             int mid = left + 1;
             int right = nums.length-1;
             while (mid < right){
-                sum += nums[left] + nums[left] + nums[right];
-                tempMin = Math.abs(tempMin-target) <= Math.abs(sum-target) ? tempMin : sum;
+                int sum = nums[left] + nums[mid] + nums[right];
+                min = Math.abs(min-target) <= Math.abs(sum-target) ? min : sum;
                 if(sum == target){
                     return target;
                 }else if(sum > target){
-                    left--;
+                    right--;
                 }else {
                     mid++;
                 }
             }
-            min = Math.abs(tempMin-target) <= Math.abs(min-target) ? tempMin : min;
+            min = Math.abs(min-target) <= Math.abs(min-target) ? min : min;
 
         }
         return min;
     }
+
+    public int threeSumClosest1(int[] nums, int target) {
+        // 排序
+        Arrays.sort(nums);
+        int closestNum = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < nums.length - 2; i++) {
+            int l = i + 1, r = nums.length - 1;
+            while (l < r){
+                int threeSum = nums[l] + nums[r] + nums[i];
+                if (Math.abs(threeSum - target) < Math.abs(closestNum - target)) {
+                    closestNum = threeSum;
+                }
+                if (threeSum > target) {
+                    r--;
+                } else if (threeSum < target) {
+                    l++;
+                } else {
+                    // 如果已经等于target的话, 肯定是最接近的
+                    return target;
+                }
+
+            }
+
+        }
+
+        return closestNum;
+    }
+
 
 }

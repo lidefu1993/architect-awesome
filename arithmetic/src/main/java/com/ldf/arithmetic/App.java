@@ -1,6 +1,5 @@
 package com.ldf.arithmetic;
 
-import java.util.UUID;
 
 /**
  * @author lidefu
@@ -9,8 +8,18 @@ import java.util.UUID;
 public class App {
 
     public static void main(String[] args) {
-        String s = UUID.randomUUID().toString().replaceAll("-", "");
-        System.out.println(s.length());
+        int maxValue = Integer.MAX_VALUE;
+        System.out.println(maxValue+1);
+        int n = -1;
+        int abs = Math.abs(maxValue - n);
+        System.out.println(abs);
+
+        System.out.println(Math.abs(Integer.MAX_VALUE+1));
+        if(abs<0){
+            System.out.println(-abs);
+        }else {
+            System.out.println(abs);
+        }
     }
 
 }
