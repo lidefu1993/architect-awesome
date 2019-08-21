@@ -1,4 +1,4 @@
-package com.ldf.architect.concurrent.demo;
+package com.ldf.architect.concurrent.demo.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

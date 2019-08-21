@@ -1,4 +1,4 @@
-package com.ldf.architect.concurrent.demo;
+package com.ldf.architect.concurrent.demo.lock;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
