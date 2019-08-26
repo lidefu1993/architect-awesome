@@ -12,10 +12,12 @@ public class SumFourNumbers {
     public static void main(String[] args) {
 
         SumFourNumbers sumFourNumbers = new SumFourNumbers();
-        int[] nums = {1,0,-1,0,-2,2};
+        int[] nums = {-2, -1, 0, 0, 0, 0, 0, 1, 2};
         int target = 0;
-        List<List<Integer>> lists = sumFourNumbers.fourSum(nums, target);
-        System.out.println(lists);
+        List<List<Integer>> lists = sumFourNumbers.fourSumOffice(nums, target);
+        System.out.println("office:" + lists);
+        List<List<Integer>> lists1 = sumFourNumbers.fourSumOffice(nums, target);
+        System.out.println("self:" + lists1);
     }
 
     public List<List<Integer>> fourSum(int[] nums, int target) {
