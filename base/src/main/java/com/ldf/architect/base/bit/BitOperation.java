@@ -14,6 +14,7 @@ public class BitOperation {
         leftMobile(-3, 1);
         rightMobile(-12, 2);
         unsignRightMobile(-12, 3);
+        integerMaxValue();
     }
 
     /**
@@ -75,6 +76,18 @@ public class BitOperation {
      */
     private static void unsignRightMobile(int n, int i){
         System.out.println(n>>>i);
+    }
+
+    private static void integerMaxValue(){
+        int n = 1;
+        System.out.println(Integer.MAX_VALUE >> 1);
+        while (Integer.MAX_VALUE>>n++ != 1){
+
+        }
+        System.out.println("n: " + n);
+        System.out.println("Integer.MAX_VALUE: " + Integer.MAX_VALUE);
+        System.out.println("2^n：" + (2^n));
+        System.out.println((2^n) == Integer.MAX_VALUE);
     }
 
 }
