@@ -21,25 +21,47 @@ public class StreamDemo {
      */
 
     public static void main(String[] args) {
-        stream();
-        foreach();
-        filter(1, 2, 3, 4);
-        concat();
-        distinct();
-        map();
-        sortLimit();
-        peek();
-        skip();
-        parallel();
-        sequential();
-        unordered();
-        match();
-        collect();
-        find();
-        maxMin();
-        reduce();
-        mapToInt();
+        demo1();
+//        stream();
+//        foreach();
+//        filter(1, 2, 3, 4);
+//        concat();
+//        distinct();
+//        map();
+//        sortLimit();
+//        peek();
+//        skip();
+//        parallel();
+//        sequential();
+//        unordered();
+//        match();
+//        collect();
+//        find();
+//        maxMin();
+//        reduce();
+//        mapToInt();
     }
+
+    /**
+     * 将一个用户数组分成两个数组，男性一个，女性一个
+     */
+    private static void demo1(){
+        List<User> users = new ArrayList<>(4);
+        users.add(new User("张三", 1));
+        users.add(new User("李四", 1));
+        users.add(new User("王五", 0));
+        users.add(new User("赵六", 0));
+        Map<Integer, List<User>> listMap = users.stream().collect(Collectors.groupingBy(User::getAge));
+        System.out.println(1);
+    }
+
+    /**
+     *
+     */
+    private static void demo2(){
+
+    }
+
 
     public static void stream(){
 //        Stream<Integer> stream = Stream.of(1);

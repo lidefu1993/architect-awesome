@@ -1,0 +1,18 @@
+server:
+  port: 8423
+  tomcat:
+    uri-encoding: utf-8
+  compression:
+    enabled: true
+spring:
+  activemq:
+    broker-url: tcp://172.16.36.198:61616
+    user: admin
+    password: admin
+    packages:
+      trust-all: true
+    in-memory: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_empty

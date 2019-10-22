@@ -12,5 +12,14 @@
     <groupId>com.ldf.architect.base</groupId>
     <artifactId>base</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
