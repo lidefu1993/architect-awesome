@@ -1,9 +1,6 @@
 package com.ldf.architect.queue;
 
-import java.util.ArrayDeque;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.concurrent.*;
 
 /**
@@ -13,7 +10,17 @@ import java.util.concurrent.*;
 public class QueueTest {
 
     public static void main(String[] args) throws InterruptedException {
-        dequeTest();
+        priorityQueueTest();
+
+       // dequeTest();
+    }
+
+    private static void concurrentLinkedQueueTest(){
+        ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
+        queue.add(1);
+        queue.add(2);
+        queue.peek();
+        queue.poll();
     }
 
     /**
@@ -35,6 +42,7 @@ public class QueueTest {
         queue.add(4);
         queue.add(2);
         queue.add(3);
+        queue.add(7);
         System.out.println(queue.size());
         while (true){
             Object poll = queue.poll();
@@ -59,6 +67,9 @@ public class QueueTest {
         queue.add("3");
         queue.add("2");
         String take = queue.take();
+        queue.peek();
+        queue.poll();
+        queue.poll(100L, TimeUnit.MILLISECONDS);
         System.out.println("queue take:" + take);
     }
 
@@ -71,6 +82,7 @@ public class QueueTest {
         queue.offer(1);
         queue.take();
         queue.poll();
+
     }
 
     /**
@@ -80,6 +92,7 @@ public class QueueTest {
         BlockingQueue<Integer> queue = new LinkedBlockingDeque<Integer>(1);
         queue.add(1);
         queue.take();
+
     }
 
     /**
@@ -93,6 +106,11 @@ public class QueueTest {
         Integer first = deque.getFirst();
         Integer last = deque.getLast();
         System.out.println("first:" + first + " last:" + last);
+    }
+
+    private static void linkedListTest(){
+        LinkedList list = new LinkedList();
+
     }
 
     /**

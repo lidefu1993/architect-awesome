@@ -1,5 +1,7 @@
 package com.ldf.architect.collect;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author lidefu
  * @date 2018/12/20 13:30
@@ -22,9 +24,42 @@ public class MapTest {
 
     public static void main(String[] args) {
 //        hashMap2();
-        treeMap2();
+//        treeMap();
+        hashTableTest();
+//        linkHashMap();
         System.out.println(1);
     }
+
+    private static void currentHashMap(){
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        map.put(1, 1);
+        map.put(2, 2);
+        System.out.println(1);
+    }
+
+    private static void hashTableTest(){
+        Hashtable hashtable = new Hashtable();
+        hashtable.put("4", "4");
+        hashtable.put("1", "1");
+        hashtable.put("2", "2");
+        hashtable.put("5", "5");
+        hashtable.put("3", "3");
+        for (Iterator iterator = hashtable.entrySet().iterator(); iterator.hasNext();){
+            System.out.println(iterator.next());
+        }
+        System.out.println(1);
+    }
+
+    private static void linkHashMap(){
+        LinkedHashMap map = new LinkedHashMap<>();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("3", "3");
+        for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext();){
+            System.out.println(iterator.next());
+        }
+    }
+
 
     private static void treeMap(){
         TreeMap<Integer, Integer> map = new TreeMap<>();

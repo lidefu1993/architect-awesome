@@ -1,5 +1,7 @@
 package com.ldf.architect.concurrent.demo.lock;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -8,9 +10,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class LockTest {
 
-    public static void main(String[] args) {
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        lock.writeLock().lock();
+    public static void main(String[] args) throws InterruptedException {
+        ReentrantLock lock = new ReentrantLock();
+        Condition condition1 = lock.newCondition();
+        condition1.await();
     }
 
 }
