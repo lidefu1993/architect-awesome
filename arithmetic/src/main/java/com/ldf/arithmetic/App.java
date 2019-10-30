@@ -1,6 +1,9 @@
 package com.ldf.arithmetic;
 
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 /**
  * @author lidefu
  * @date 2019/1/8 13:09
@@ -8,6 +11,8 @@ package com.ldf.arithmetic;
 public class App {
 
     public static void main(String[] args) {
+
+
         int maxValue = Integer.MAX_VALUE;
         System.out.println(maxValue+1);
         int n = -1;

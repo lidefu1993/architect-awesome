@@ -9,7 +9,9 @@ import java.util.concurrent.*;
 public class ThreadPoolDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        threadPool();
+//        threadPool();
+
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(2);
     }
 
 
