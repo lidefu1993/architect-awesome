@@ -1,6 +1,5 @@
 package com.ldf.architect.base;
 
-import java.util.List;
 
 /**
  * @author lidefu

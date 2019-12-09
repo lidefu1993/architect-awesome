@@ -1,6 +1,5 @@
 package com.ldf.architect.base.proxy;
 
-import net.sf.cglib.proxy.Enhancer;
 
 import java.lang.reflect.Proxy;
 
@@ -27,13 +26,13 @@ public class ProxyTest {
     }
 
     private static void cglibProxy(){
-        UserInterceptor proxy = new UserInterceptor();
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(UserServiceImpl.class);
-        enhancer.setCallback(proxy);
-        UserServiceImpl user = (UserServiceImpl) enhancer.create();
-        user.getAge();
-        System.out.println(1);
+//        UserInterceptor proxy = new UserInterceptor();
+//        Enhancer enhancer = new Enhancer();
+//        enhancer.setSuperclass(UserServiceImpl.class);
+//        enhancer.setCallback(proxy);
+//        UserServiceImpl user = (UserServiceImpl) enhancer.create();
+//        user.getAge();
+//        System.out.println(1);
     }
 
 

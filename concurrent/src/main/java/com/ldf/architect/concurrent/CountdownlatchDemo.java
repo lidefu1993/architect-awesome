@@ -11,7 +11,7 @@ public class CountdownlatchDemo {
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         new Thread(() -> {
-            Service service = new CountdownlatchDemo().new Service(countDownLatch, 10000000L);
+            Service service = new CountdownlatchDemo().new Service(countDownLatch, 100000L);
             service.test();
         }).start();
 
@@ -22,6 +22,7 @@ public class CountdownlatchDemo {
 
         countDownLatch.await();
         System.out.println("--------------------结束--------------------");
+        System.exit(200);
     }
 
     public class Service{

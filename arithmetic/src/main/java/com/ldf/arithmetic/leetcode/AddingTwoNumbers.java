@@ -18,8 +18,8 @@ public class AddingTwoNumbers{
      */
 
     public static void main(String[] args) {
-        ListNode l1 = createListNode("364");
-        ListNode l2 = createListNode("757");
+        ListNode l1 = createListNode("345");
+        ListNode l2 = createListNode("165");
         AddingTwoNumbers numbers = new AddingTwoNumbers();
         ListNode node = numbers.addTwoNumbers(l1, l2);
         System.out.println(node);
