@@ -13,7 +13,7 @@ public class MaoPaoSort extends AbstractSort{
 
     public static void main(String[] args) {
         AbstractSort sort = new MaoPaoSort();
-        sort.test(50000);
+        sort.test(100000);
     }
 
     @Override
