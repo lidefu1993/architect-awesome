@@ -45,5 +45,9 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.44</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 </project>
