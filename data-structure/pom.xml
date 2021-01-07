@@ -13,6 +13,8 @@
     <artifactId>data-structure</artifactId>
 
     <description>数据结构</description>
+
+
     <build>
         <plugins>
             <plugin>

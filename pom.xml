@@ -36,6 +36,7 @@
         <module>base</module>
         <module>jvm</module>
         <module>springbooy-demo</module>
+        <module>0-job</module>
     </modules>
 
     <dependencies>
