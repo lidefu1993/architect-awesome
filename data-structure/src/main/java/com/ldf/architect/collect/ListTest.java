@@ -21,71 +21,79 @@ public class ListTest {
      *
      */
 
-    public static void main(String[] args) {
-        remainAll();
+    public static void main(String[] args) throws InterruptedException {
+
+        linkedListTest();
+
     }
 
-    private static void remainAll(){
-        String s = "abss";
-        ArrayList<String> list = new ArrayList<>(Arrays.asList(s.split("")));
-        System.out.println(list);
-        System.out.println(list.subList(2, 4));
-        System.out.println();
-    }
-
-    /**
-     * arrayList 基于数组
-     * 获取指定索引的值效率高，删除、插入效率较低 涉及到整体数组的挪动
-     */
-    private static void arrayList(){
-        List<String> list = new ArrayList<String>();
-        list.add("1"); list.add("2"); list.add("3");
-        //元素插入到指定索引位置 原先索引位置及后边的值向后挪一位 （前提是当前的list集合的对应索引位置已经有值了）
-        list.add(2, " 测试2 ");
-        list.add("测试");
-        list.add("测试");
-        System.out.println("old size :" + JSON.toJSONString(list));
-        System.out.println("size:"+list.size());
-        //返回对象在集合中第一次出现的位置索引
-        int indexOf = list.indexOf("测试");
-        System.out.println("indexOf:" + indexOf);
-        //返回对象在集合中最后一次出现的位置
-        int lastIndexOf = list.lastIndexOf("测试");
-        System.out.println("lastIndexOf:" + lastIndexOf);
-        String set = list.set(0, "测试0");
-        System.out.println("index = 0 old : " + set);
-        //返回从索引0到索引2之间所有元素组成的子集合 （左闭右开区间）
-        List<String> list1 = list.subList(0, 2);
-        System.out.println(" 0 - 2 list :" + JSON.toJSONString(list1));
-        //根据指定规则重新设置集合中的所有元素
-        list.replaceAll(String::trim);
-        //排序
-        list.sort((o1, o2) -> (o1.hashCode() > o2.hashCode()) ? 1 : -1);
-        System.out.println("sort :" + JSON.toJSONString(list));
+    private static void linkedListTest() throws InterruptedException {
+        linkedListConcurrentAdd();
     }
 
     /**
-     * LinkedList 基于双向链表
-     * 查找效率较低，每次都要从起始/结束 节点开始查找
+     * LinkedList 并发插入 越界异常IndexOutOfRangeException
      */
-    private static void linkedList(){
-        List<Integer> list = new LinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(3, 4);
-        list.set(0, 0);
-        list.subList(0, 2);
-        list.remove(0);
-        list.remove(1);
+    private static void linkedListConcurrentAdd() throws InterruptedException {
+        ArrayList<Integer> arrayList = new ArrayList<>(1);
+        new Thread(() -> {
+            for(int i=0; i<= 10; i++){
+                arrayList.add(i);
+            }
+        }).start();
+        new Thread(() -> {
+            for(int i=0; i<= 10; i++){
+                arrayList.add(i);
+            }
+        }).start();
+
+        Thread.sleep(100L);
+        System.out.println(arrayList.size());
+    }
+
+
+    private static void arrayListTest(){
+        ArrayList<Integer> arrayList = new ArrayList<>();
     }
 
     /**
-     * Vector基于数据的线程安全的集合
+     * ArrayList 并发插入 越界异常IndexOutOfRangeException
      */
-    private static void vectorTest(){
-        List<Integer> vector = new Vector<>();
-        vector.add(1);
+    private static void arrayListConcurrentAdd() throws InterruptedException {
+        ArrayList<Integer> arrayList = new ArrayList<>(1);
+        new Thread(() -> {
+            for(int i=0; i<= 100; i++){
+                arrayList.add(i);
+            }
+        }).start();
+        new Thread(() -> {
+            for(int i=0; i<= 10; i++){
+                arrayList.add(i);
+            }
+        }).start();
+        System.out.println(arrayList);
+    }
+
+    /**
+     * 并发移除 并发操作异常
+     */
+    private static void arrayListConcurrentRemove() throws InterruptedException {
+        ArrayList<Integer> arrayList = new ArrayList<>(1);
+        for(int i=0; i<= 10002; i++){
+            arrayList.add(i);
+        }
+        new Thread(() -> {
+            for(int i=5000; i>=0; i--){
+                arrayList.remove(i);
+            }
+        }).start();
+        new Thread(() -> {
+            for(int i=5000; i>=0; i--){
+                arrayList.remove(i);
+            }
+        }).start();
+        Thread.sleep(10000L);
+        System.out.println(arrayList);
     }
 
 
