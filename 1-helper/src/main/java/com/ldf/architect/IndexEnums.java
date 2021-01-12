@@ -1,6 +1,8 @@
 package com.ldf.architect;
 
 import com.ldf.architect.config.RedisConfig;
+import com.ldf.architect.helper.BeanFactoryUtil;
+import com.ldf.architect.test.config.RedisConfigTest;
 
 /**
  * @author lidefu
@@ -11,8 +13,8 @@ public enum IndexEnums {
     /**
      * 索引
      */
-    REDIS_CONFIG("redis配置类", RedisConfig.class, null),
-
+    REDIS_CONFIG("redis配置类", RedisConfig.class, RedisConfigTest.class),
+    BEAN_FACTORY_UTIL("bean工厂工具类", BeanFactoryUtil.class, BeanFactoryUtil.class),
 
     ;
     private String msg;
