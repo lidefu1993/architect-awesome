@@ -1,4 +1,5 @@
 import com.ldf.architect.collect.ListTest;
+import com.ldf.arithmetic.leetcode.RedundantConnection;
 import com.ldf.arithmetic.other.LinkReset;
 
 import java.util.List;
@@ -12,7 +13,9 @@ public enum  FindJobLearnPlan {
     /**
      *  学习计划
      */
-    PLAN_20210108("链表重置&&List集合", new Class[]{LinkReset.class, ListTest.class}),
+    PLAN_20210108("算法：链表重置, 知识点：List", new Class[]{LinkReset.class, ListTest.class}),
+    PLAN_20210113("算法：冗余连接(leetcode), 知识点：Map", new Class[]{RedundantConnection.class, ListTest.class}),
+
     ;
 
 

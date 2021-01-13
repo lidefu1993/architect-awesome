@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import javax.sound.midi.Soundbank;
 import java.awt.event.ItemEvent;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 
 /**
@@ -16,6 +17,7 @@ public class ListTest {
 
     /**
      * List
+     *  https://juejin.cn/post/6916069478765690887/
      * ArrayList 和 LinkedList
      *
      *
@@ -23,8 +25,11 @@ public class ListTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        linkedListTest();
+        linkedListConcurrentRemove();
 
+    }
+
+    private static void vectorTest(){
     }
 
     private static void linkedListTest() throws InterruptedException {
@@ -32,23 +37,42 @@ public class ListTest {
     }
 
     /**
-     * LinkedList 并发插入 越界异常IndexOutOfRangeException
+     * LinkedList 并发插入
      */
     private static void linkedListConcurrentAdd() throws InterruptedException {
-        ArrayList<Integer> arrayList = new ArrayList<>(1);
-        new Thread(() -> {
-            for(int i=0; i<= 10; i++){
-                arrayList.add(i);
-            }
-        }).start();
-        new Thread(() -> {
-            for(int i=0; i<= 10; i++){
-                arrayList.add(i);
-            }
-        }).start();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        int num = 1000;
+        CountDownLatch latch = new CountDownLatch(num);
+        for(int i=0; i<num; i++){
+            new Thread(()->{
+                linkedList.add(1);
+                latch.countDown();
+            }).start();
+        }
+        latch.await();
+        System.out.println(linkedList.size());
+    }
 
-        Thread.sleep(100L);
-        System.out.println(arrayList.size());
+    /**
+     * LinkedList 并发移除
+     */
+    private static void linkedListConcurrentRemove() throws InterruptedException {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for(int i=0; i<1000; i++){
+            linkedList.add(i);
+        }
+        int num = 500;
+        CountDownLatch latch = new CountDownLatch(num);
+        for(int i=0; i<num; i++){
+            new Thread(()->{
+                linkedList.remove(499);
+                latch.countDown();
+            }).start();
+
+        }
+        latch.await();
+        System.out.println(linkedList.size());
+        System.out.println(linkedList.getLast());
     }
 
 
