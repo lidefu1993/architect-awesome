@@ -1,5 +1,8 @@
 package com.ldf.arithmetic.leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author lidefu
  * @date 2021年01月13日18:49
@@ -34,14 +37,53 @@ public class RedundantConnection {
 
     public static void main(String[] args) {
         RedundantConnection rd = new RedundantConnection();
-        int[][] edges = new int[][]{};
-        rd.findRedundantConnection(edges);
+        int[][] edges = {{1,2},{1,4}, {2,3}, {3,4},  {1,5}};
+        int[] ints = rd.findRedundantConnection(edges);
+        for(int i : ints){
+            System.out.println(i);
+        }
     }
 
-
+    /**
+     *  题意理解：
+     *     给定一个图，该图为树多了一条边从而出现回环形成，找出该边返回
+     *  思路：并查集
+     *
+     *
+     *
+     */
     public int[] findRedundantConnection(int[][] edges) {
-
-        return null;
+        int nodeNums = edges.length;
+        //存储各个节点对应的父级节点，初始化赋值为自己
+        int[] parents = new int[nodeNums+1];
+        for(int i=1; i<= nodeNums; i++){
+            parents[i] = i;
+        }
+        //遍历各边 若边的两个顶点存在相同的根节点 则该边会导致回环
+        for(int i=0; i<edges.length; i++){
+            int n1 = edges[i][0];
+            int n2 = edges[i][1];
+            if(findRoot(parents, n1) == findRoot(parents, n2)){
+                return new int[]{n1, n2};
+            }
+            //合并
+            parents[findRoot(parents, n1)] = findRoot(parents, n2);
+        }
+        return new int[0];
     }
+
+    /**
+     * 查找节点n的根节点
+     * @param parents 父级节点数组
+     * @param n 节点
+     * @return n的根节点
+     */
+    private int findRoot(int[] parents, int n){
+        if(parents[n] == n){
+            return n;
+        }
+        return findRoot(parents, parents[n]);
+    }
+
 
 }
