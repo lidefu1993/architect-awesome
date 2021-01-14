@@ -7,14 +7,13 @@ package com.ldf.architect.base.bit;
 public class BitOperation {
 
     public static void main(String[] args) {
-        and(4);
-        or(5);
-        xor(1214520);
-        not(-253);
-        leftMobile(-3, 1);
-        rightMobile(-12, 2);
-        unsignRightMobile(-12, 3);
-        integerMaxValue();
+
+        int val = 3;
+        int s = 1;
+        int r = val^s;
+        System.out.println(r^s);
+
+
     }
 
     /**

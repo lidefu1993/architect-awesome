@@ -18,12 +18,29 @@ public class MapTest {
      *      影响，继而影响低位的索引值计算，减少碰撞次数
      */
 
-
-
-
-
     public static void main(String[] args) {
-        System.out.println(1);
+        int n = 5;
+        System.out.println(tableSizeFor(n));
+        System.out.println(tableSizeForSelf(n));
+    }
+
+    private static void hashMapTest(){
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        System.out.println(hashMap);
+    }
+
+    private static int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return n + 1;
+    }
+
+    private static int tableSizeForSelf(int cap) {
+        return cap/2 == 0 ? cap : cap+1;
     }
 
 

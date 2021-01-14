@@ -1,4 +1,6 @@
 import com.ldf.architect.collect.ListTest;
+import com.ldf.architect.collect.MapTest;
+import com.ldf.arithmetic.leetcode.PrefixesDivBy5;
 import com.ldf.arithmetic.leetcode.RedundantConnection;
 import com.ldf.arithmetic.other.LinkReset;
 
@@ -14,7 +16,9 @@ public enum  FindJobLearnPlan {
      *  学习计划
      */
     PLAN_20210108("算法：链表重置, 知识点：List", new Class[]{LinkReset.class, ListTest.class}),
-    PLAN_20210113("算法：冗余连接(leetcode), 知识点：Map", new Class[]{RedundantConnection.class, ListTest.class}),
+    PLAN_20210113("算法：冗余连接(leetcode), 知识点：Map", new Class[]{RedundantConnection.class, MapTest.class}),
+    PLAN_20210114("算法：可被 5 整除的二进制前缀", new Class[]{PrefixesDivBy5.class}),
+
 
     ;
 
