@@ -19,14 +19,18 @@ public class MapTest {
      */
 
     public static void main(String[] args) {
-        int n = 5;
-        System.out.println(tableSizeFor(n));
-        System.out.println(tableSizeForSelf(n));
+        hashMapTest();
     }
 
     private static void hashMapTest(){
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        System.out.println(hashMap);
+        HashMap<Integer, Integer> hashMap1 = new HashMap<>(2);
+        HashMap<Integer, Integer> hashMap2 = new HashMap<>(2);
+        hashMap1.put(1, 1);
+        hashMap1.put(2, 2);
+        hashMap1.put(3, 3);
+        hashMap1.get(1);
+        System.out.println(hashMap1);
+        System.out.println(hashMap2);
     }
 
     private static int tableSizeFor(int cap) {

@@ -5,7 +5,7 @@
 public class BitOperation {
 
     public static void main(String[] args) {
-        String s = Integer.toBinaryString(-2);
+        String s = Integer.toBinaryString(-1);
         System.out.println(s);
     }
 

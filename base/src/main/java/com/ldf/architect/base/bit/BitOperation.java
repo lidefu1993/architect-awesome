@@ -8,10 +8,10 @@ public class BitOperation {
 
     public static void main(String[] args) {
 
-        int val = 3;
-        int s = 1;
-        int r = val^s;
-        System.out.println(r^s);
+
+        System.out.println(4>>>1);
+
+        System.out.println(-4>>>1);
 
 
     }
