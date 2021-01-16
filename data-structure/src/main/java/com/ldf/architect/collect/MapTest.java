@@ -19,18 +19,37 @@ public class MapTest {
      */
 
     public static void main(String[] args) {
-        hashMapTest();
+
+//        hashMapTest();
+        linkedHashMap();
+    }
+
+    private static void linkedHashMap(){
+        LinkedHashMap<String, Integer> hashMap = new LinkedHashMap<>(4);
+        for(int i=0; i<16; i++){
+            hashMap.put(random(), i);
+        }
+        hashMap.get(1);
+        System.out.println();
     }
 
     private static void hashMapTest(){
         HashMap<Integer, Integer> hashMap1 = new HashMap<>(2);
-        HashMap<Integer, Integer> hashMap2 = new HashMap<>(2);
+        HashMap<TestKey, Integer> hashMap2 = new HashMap<>(2);
         hashMap1.put(1, 1);
         hashMap1.put(2, 2);
         hashMap1.put(3, 3);
         hashMap1.get(1);
+        TestKey key1 = new TestKey(1);
+        TestKey key2 = new TestKey(2);
+        hashMap2.put(key1, 1);
+        hashMap2.put(key2, 2);
         System.out.println(hashMap1);
         System.out.println(hashMap2);
+    }
+
+    private static String random(){
+        return UUID.randomUUID().toString();
     }
 
     private static int tableSizeFor(int cap) {
@@ -48,7 +67,7 @@ public class MapTest {
     }
 
 
-    public class TestKey{
+    public static class TestKey{
 
         private int id;
 
