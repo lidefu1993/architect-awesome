@@ -19,6 +19,7 @@ public enum  FindJobLearnPlan {
     PLAN_20210108("算法：链表重置, 知识点：List", new Class[]{LinkReset.class, ListTest.class}),
     PLAN_20210113("算法：冗余连接(leetcode), 知识点：Map", new Class[]{RedundantConnection.class, MapTest.class}),
     PLAN_20210114("算法：可被 5 整除的二进制前缀", new Class[]{PrefixesDivBy5.class}),
+    //TODO 打砖块
     PLAN_20210116("算法：打砖块", new Class[]{HitBricks.class}),
 
     ;

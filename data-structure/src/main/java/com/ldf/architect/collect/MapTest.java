@@ -20,7 +20,7 @@ public class MapTest {
 
     public static void main(String[] args) {
 
-//        hashMapTest();
+        hashMapTest();
         linkedHashMap();
     }
 
@@ -30,16 +30,24 @@ public class MapTest {
             hashMap.put(random(), i);
         }
         hashMap.get(1);
+        hashMap.forEach((k, v)-> System.out.println("key:" + k + "; value:" + v));
         System.out.println();
     }
 
     private static void hashMapTest(){
-        HashMap<Integer, Integer> hashMap1 = new HashMap<>(2);
-        HashMap<TestKey, Integer> hashMap2 = new HashMap<>(2);
-        hashMap1.put(1, 1);
-        hashMap1.put(2, 2);
-        hashMap1.put(3, 3);
+        HashMap<String, Integer> hashMap1 = new HashMap<>(5);
+        hashMap1.put("5", -5);
+        hashMap1.put("4", -4);
+        hashMap1.put("3", -3);
+        hashMap1.put(random(), 1);
+        hashMap1.put(random(), 2);
+        hashMap1.put(random(), 3);
+        hashMap1.put(random(), 4);
+        hashMap1.put(random(), 5);
         hashMap1.get(1);
+        hashMap1.forEach((k,v)-> System.out.println("K:"+k+"; V:"+v));
+
+        HashMap<TestKey, Integer> hashMap2 = new HashMap<>(2);
         TestKey key1 = new TestKey(1);
         TestKey key2 = new TestKey(2);
         hashMap2.put(key1, 1);
