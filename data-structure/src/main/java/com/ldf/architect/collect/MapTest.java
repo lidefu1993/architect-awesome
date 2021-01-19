@@ -20,17 +20,17 @@ public class MapTest {
 
     public static void main(String[] args) {
 
-        hashMapTest();
+//        hashMapTest();
         linkedHashMap();
     }
 
     private static void linkedHashMap(){
-        LinkedHashMap<String, Integer> hashMap = new LinkedHashMap<>(4);
+        LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>(4);
         for(int i=0; i<16; i++){
-            hashMap.put(random(), i);
+            linkedHashMap.put(""+i, i);
         }
-        hashMap.get(1);
-        hashMap.forEach((k, v)-> System.out.println("key:" + k + "; value:" + v));
+        linkedHashMap.get(1);
+        linkedHashMap.forEach((k, v)-> System.out.println("key:" + k + "; value:" + v));
         System.out.println();
     }
 
@@ -45,8 +45,13 @@ public class MapTest {
         hashMap1.put(random(), 4);
         hashMap1.put(random(), 5);
         hashMap1.get(1);
+        Set<Map.Entry<String, Integer>> entries = hashMap1.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator = entries.iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Integer> entry = iterator.next();
+            System.out.println(entry);
+        }
         hashMap1.forEach((k,v)-> System.out.println("K:"+k+"; V:"+v));
-
         HashMap<TestKey, Integer> hashMap2 = new HashMap<>(2);
         TestKey key1 = new TestKey(1);
         TestKey key2 = new TestKey(2);
