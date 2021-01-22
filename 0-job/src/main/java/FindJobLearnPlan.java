@@ -21,6 +21,7 @@ public enum  FindJobLearnPlan {
     PLAN_20210114("算法：可被 5 整除的二进制前缀", new Class[]{PrefixesDivBy5.class}),
     //TODO 打砖块
     PLAN_20210116("算法：打砖块", new Class[]{HitBricks.class}),
+    PLAN_20210121("并查集", new Class[]{RedundantConnection.class}),
 
     ;
 

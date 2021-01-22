@@ -21,7 +21,21 @@ public class MapTest {
     public static void main(String[] args) {
 
 //        hashMapTest();
-        linkedHashMap();
+//        linkedHashMap();
+        treeMap();
+    }
+
+    private static void treeMap(){
+        TreeMap<Integer, Integer> treeMap = new TreeMap<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+        treeMap.put(5, 5);
+        treeMap.put(1, 10);
+        treeMap.put(8, 8);
+        System.out.println(treeMap);
     }
 
     private static void linkedHashMap(){

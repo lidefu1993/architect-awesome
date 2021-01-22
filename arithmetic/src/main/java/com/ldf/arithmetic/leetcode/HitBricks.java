@@ -77,7 +77,7 @@ public class HitBricks {
     }
 
     public int[] hitBricks(int[][] grid, int[][] hits) {
-
+        return null;
     }
 
 }

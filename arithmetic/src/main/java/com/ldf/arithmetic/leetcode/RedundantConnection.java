@@ -48,9 +48,6 @@ public class RedundantConnection {
      *  题意理解：
      *     给定一个图，该图为树多了一条边从而出现回环形成，找出该边返回
      *  思路：并查集
-     *
-     *
-     *
      */
     public int[] findRedundantConnection(int[][] edges) {
         int nodeNums = edges.length;
@@ -66,7 +63,7 @@ public class RedundantConnection {
             if(findRoot(parents, n1) == findRoot(parents, n2)){
                 return new int[]{n1, n2};
             }
-            //合并
+            //合并 n1节点根节点的父级节点指向n2节点的根节点
             parents[findRoot(parents, n1)] = findRoot(parents, n2);
         }
         return new int[0];
