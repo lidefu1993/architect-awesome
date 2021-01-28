@@ -1,9 +1,6 @@
 import com.ldf.architect.collect.ListTest;
 import com.ldf.architect.collect.MapTest;
-import com.ldf.arithmetic.leetcode.HitBricks;
-import com.ldf.arithmetic.leetcode.PrefixesDivBy5;
-import com.ldf.arithmetic.leetcode.RedundantConnection;
-import com.ldf.arithmetic.leetcode.StockMaxProfit;
+import com.ldf.arithmetic.leetcode.*;
 import com.ldf.arithmetic.other.LinkReset;
 
 import java.util.List;
@@ -22,7 +19,9 @@ public enum  FindJobLearnPlan {
     PLAN_20210114("算法：可被 5 整除的二进制前缀", new Class[]{PrefixesDivBy5.class}),
     PLAN_20210116("算法：打砖块（未解决）", new Class[]{HitBricks.class}),
     PLAN_20210121("算法：并查集", new Class[]{RedundantConnection.class}),
-    PLAN_20210125("动态规划", new Class[]{StockMaxProfit.class})
+    PLAN_20210125("动态规划", new Class[]{StockMaxProfit.class, MaxSubArray.class,
+            IsSubsequence.class, ClimbingStairs.class, MinCostClimbingStairs.class, Masseur.class, NumArray.class
+    })
 
     ;
 
