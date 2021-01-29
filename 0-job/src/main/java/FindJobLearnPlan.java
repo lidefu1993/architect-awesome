@@ -21,7 +21,8 @@ public enum  FindJobLearnPlan {
     PLAN_20210121("算法：并查集", new Class[]{RedundantConnection.class}),
     PLAN_20210125("动态规划", new Class[]{StockMaxProfit.class, MaxSubArray.class,
             IsSubsequence.class, ClimbingStairs.class, MinCostClimbingStairs.class, Masseur.class, NumArray.class
-    })
+    }),
+    PLAN_20210228("io", new Class[]{})
 
     ;
 
