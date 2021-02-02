@@ -32,7 +32,6 @@ public class Masseur {
      来源：力扣（LeetCode）
      链接：https://leetcode-cn.com/problems/the-masseuse-lcci
      */
-
     public static void main(String[] args) {
         Masseur masseur = new Masseur();
 //        int[] nums = {1,2,3,1};

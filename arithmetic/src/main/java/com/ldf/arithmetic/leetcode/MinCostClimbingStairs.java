@@ -25,8 +25,8 @@ public class MinCostClimbingStairs {
 
      提示：
 
-     cost 的长度范围是 [2, 1000]。
-     cost[i] 将会是一个整型数据，范围为 [0, 999] 。
+
+
 
      来源：力扣（LeetCode）
      链接：https://leetcode-cn.com/problems/min-cost-climbing-stairs
