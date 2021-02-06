@@ -1,6 +1,7 @@
 package com.ldf.arithmetic.leetcode;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * 删除链表的倒数第N个节点
@@ -22,6 +23,7 @@ public class DeleteLinkedNode {
         DeleteLinkedNode node = new DeleteLinkedNode();
         ListNode node1 = node.removeNthFromEndOfficial(node.listNode(), 4);
         System.out.println(node1);
+
     }
 
 

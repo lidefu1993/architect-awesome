@@ -35,7 +35,7 @@
         <module>project-management</module>
         <module>base</module>
         <module>jvm</module>
-        <module>springbooy-demo</module>
+        <module>springboot-demo</module>
         <module>0-job</module>
         <module>1-helper</module>
     </modules>
@@ -51,5 +51,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
     </dependencies>
 </project>

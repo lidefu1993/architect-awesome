@@ -8,7 +8,17 @@ package com.ldf.architect.base;
 public class App {
 
     public static void main(String[] args) {
+        Demo demo = new Demo();
+    }
 
+    public static class Demo{
+        private int a;
+
+        @Override
+        public int hashCode(){
+            System.out.println("hashcode");
+            return 1;
+        }
     }
 
     private static void max(){

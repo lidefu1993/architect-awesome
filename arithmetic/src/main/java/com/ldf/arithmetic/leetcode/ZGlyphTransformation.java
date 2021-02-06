@@ -38,9 +38,11 @@ public class ZGlyphTransformation {
 
     public static void main(String[] args) {
         ZGlyphTransformation zGlyphTransformation = new ZGlyphTransformation();
-        String s = zGlyphTransformation.convert("LEETCODEISHIRING", 4);
+        String s = zGlyphTransformation.convert("PAYPALISHIRING", 3);
         System.out.println(s);
+        System.out.println(s.equals("PINALSIGYAHRPI"));
     }
+
 
     public String convert(String s, int numRows) {
         if(numRows == 1){

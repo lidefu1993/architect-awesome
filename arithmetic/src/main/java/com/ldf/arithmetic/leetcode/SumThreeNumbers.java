@@ -39,22 +39,29 @@ public class SumThreeNumbers {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         for(int left = 0; left < nums.length; left++){
+            //要求三数之和==0，其中之一大于0，左指针为最小值，最小值大于0，则不满足要求
             if(nums[left] > 0){
                 break;
             }
             int mid = left+1;
             int right = nums.length-1;
             while (mid < right){
+                //题目要求找不重复的三元组，若当前的左指针等于上一个左指针 必然会得到重复的结果 故此处跳出循环
                 if(left > 0 && nums[left] == nums[left-1]){
                     break;
                 }
                 if(nums[left] + nums[mid] + nums[right] == 0){
+                    //添加满足条件的一组数据
                     res.add(Arrays.asList(nums[left], nums[mid], nums[right]));
+                    //处理mid等值的情况
                     while(mid < right && nums[++mid] == nums[mid-1]){};
+                    //处理right等值的情况
                     while(mid < right && nums[--right] == nums[right+1]){};
                 }else if(nums[left] + nums[mid] + nums[right] < 0){
+                    //和小于0 向右移动mid指针，增加sum值
                     mid++;
                 }else {
+                    //和大于0 向左移动right指针，减少sum值
                     right--;
                 }
 

@@ -24,9 +24,30 @@ public class MergingTwoOrderedLinked {
         MergingTwoOrderedLinked linked = new MergingTwoOrderedLinked();
         ListNode l1 = linked.listNode(1, 2, 4);
         ListNode l2 = linked.listNode(1, 3, 4);
-        ListNode node = linked.mergeTwoLists2(l1, l2);
-        ListNode node1 = linked.mergeTwoLists(l1, l2);
+        ListNode node = linked.mergeTwoListsN(l1, l2);
         System.out.println(1);
+    }
+
+    public ListNode mergeTwoListsN(ListNode l1, ListNode l2){
+        ListNode node = new ListNode(0);
+        ListNode curr = node;
+        while (l1 != null && l2 != null){
+            if(l2.val > l1.val){
+                curr.next = l1;
+                l1 = l1.next;
+            }else {
+                curr.next = l2;
+                l2 = l2.next;
+            }
+            curr = curr.next;
+        }
+        if(l1 != null){
+            curr.next = l1;
+        }
+        if(l2 != null){
+            curr.next = l2;
+        }
+        return node.next;
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

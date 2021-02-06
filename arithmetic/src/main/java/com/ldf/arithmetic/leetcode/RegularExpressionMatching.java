@@ -51,64 +51,41 @@ public class RegularExpressionMatching {
     public static void main(String[] args) {
 
         RegularExpressionMatching matching = new RegularExpressionMatching();
-        System.out.println(matching.isMatch("mississippi", "mis*is*ip*."));
+        System.out.println(matching.isMatch2("mississippi", "p**"));
     }
 
     public boolean isMatch2(String s, String p) {
-        if(".*".equals(p)){
-            return true;
-        }
-        if(s == null && p == null){
-            return true;
-        }
-        if(s == null){
-            return false;
-        }else if( p == null){
-            return false;
-        }
-        int i=s.length()-1,j=p.length()-1;
-        while (i>=0 && j>=0){
-            if(p.charAt(j) == '*'){
-                if(p.charAt(j-1) == s.charAt(i) || p.charAt(j-1) == '.'){
-                    i--;
-                }else {
-                    j-=2;
-                }
-            }else {
-                if(p.charAt(j) == '.' || s.charAt(i) == p.charAt(j)){
-                    i--;
-                    j--;
-                }else {
-                    return false;
-                }
-            }
-        }
-        if(j < 0){
-            if(i < 0){
-                return true;
-            }else {
-                return false;
-            }
-        }
-        if(i < 0 ){
-            if(j < 0){
-                return true;
-            }else {
-                while (j >= 0){
-                    if(p.charAt(j) == '*'){
-                        j-=2;
-                    }else {
-                        return false;
+        int m = s.length();
+        int n = p.length();
+
+        boolean[][] f = new boolean[m + 1][n + 1];
+        f[0][0] = true;
+        for (int i = 0; i <= m; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                if (p.charAt(j - 1) == '*') {
+                    f[i][j] = f[i][j - 2];
+                    if (matches(s, p, i, j - 1)) {
+                        f[i][j] = f[i][j] || f[i - 1][j];
+                    }
+                } else {
+                    if (matches(s, p, i, j)) {
+                        f[i][j] = f[i - 1][j - 1];
                     }
                 }
-                if(j <= -1){
-                    return true;
-                }
             }
         }
-        return false;
+        return f[m][n];
     }
 
+    public boolean matches(String s, String p, int i, int j) {
+        if (i == 0) {
+            return false;
+        }
+        if (p.charAt(j - 1) == '.') {
+            return true;
+        }
+        return s.charAt(i - 1) == p.charAt(j - 1);
+    }
 
     public boolean isMatch(String s, String p){
         if (p.isEmpty()) {

@@ -1,5 +1,7 @@
 package com.ldf.arithmetic.other;
 
+import java.util.HashMap;
+
 /**
  * @author ldf
  * @date 2021/1/7 22:19
@@ -14,9 +16,37 @@ public class LinkReset {
         LinkNode linkNode = testLinkNode();
         System.out.println("原链表：" );
         print(linkNode);
-        LinkNode resetLinkNode = reset(linkNode);
+        LinkNode resetLinkNode = reset2(linkNode);
         System.out.println("倒转后：" );
         print(resetLinkNode);
+    }
+
+    public static LinkNode reset2(LinkNode node){
+        LinkNode pre = null;
+        LinkNode curr = node;
+        while (curr != null){
+            LinkNode next = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = next;
+        }
+        return pre;
+    }
+
+    public static LinkNode reverse(LinkNode node){
+        HashMap<Integer, LinkNode> nodeMap = new HashMap<>();
+        int index = 0;
+        nodeMap.put(index, node);
+        while(node.next != null){
+            index++;
+            nodeMap.put(index, node.next);
+            node = node.next;
+        }
+        for(int i=index; i>0; i--){
+            nodeMap.get(i).next = nodeMap.get(i-1);
+        }
+        nodeMap.get(0).next=null;
+        return nodeMap.get(index);
     }
 
     private static LinkNode reset(LinkNode linkNode){

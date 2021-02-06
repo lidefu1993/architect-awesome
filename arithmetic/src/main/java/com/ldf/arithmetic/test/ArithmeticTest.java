@@ -10,6 +10,7 @@ public class ArithmeticTest {
         int[] a = {1, -1, 0,1, 1,2};
         System.out.println(count3(a));
         System.out.println(count2(a));
+
     }
 
     /**
