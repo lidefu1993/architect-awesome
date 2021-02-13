@@ -11,7 +11,7 @@ public class MergeSortedArray {
 
     /**
      * 给定两个有序数组，聚合为一个有序数组，
-     * 例如 int a[] = {1,4,7} int b[]={1,2,3,6} int c[]=?
+     * 例如 int a[] = {1,4,7} int b[]={1,2,3,6} 合并后为[1,1,2,3,4,6,7]
      */
 
     public static void main(String[] args) {
