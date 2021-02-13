@@ -3,6 +3,8 @@ package com.ldf.architect.collect;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.LinkedList;
+
 public class BinarySearchTree {
 
     /**
@@ -19,7 +21,43 @@ public class BinarySearchTree {
         BinaryNode node10 = find(node, 10);
         BinaryNode remove = remove(tree, 10);
         System.out.println("结束--------------");
+        level(tree);
+        StringBuilder s = new StringBuilder();
+        dept(tree, s);
+        System.out.println(s);
+    }
 
+    /**
+     * 层次遍历
+     * @param tree -
+     * @return -
+     */
+    public static String level(BinaryNode tree){
+        StringBuilder s = new StringBuilder();
+        LinkedList<BinaryNode> queue = new LinkedList<>();
+        queue.offer(tree);
+        while (!queue.isEmpty()){
+            BinaryNode node = queue.poll();
+            if(node != null){
+                s.append(node.val);
+                queue.offer(node.left);
+                queue.offer(node.right);
+            }
+        }
+        return queue.toString();
+    }
+
+    /**
+     * 深度遍历
+     * @param tree -
+     * @return -
+     */
+    public static void dept(BinaryNode tree, StringBuilder s){
+        if(tree != null){
+            s.append(tree.val);
+            dept(tree.left, s);
+            dept(tree.right, s);
+        }
     }
 
     /**

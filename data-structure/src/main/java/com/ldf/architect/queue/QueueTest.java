@@ -10,7 +10,16 @@ import java.util.concurrent.*;
 public class QueueTest {
 
     public static void main(String[] args) throws InterruptedException {
-        priorityQueueTest();
+
+        LinkedList<Integer> list = new LinkedList<>();
+        list.offer(1);
+        list.offer(2);
+        list.offer(3);
+        while (!list.isEmpty()){
+            System.out.println(list.poll());
+        }
+
+//        priorityQueueTest();
 
        // dequeTest();
     }
