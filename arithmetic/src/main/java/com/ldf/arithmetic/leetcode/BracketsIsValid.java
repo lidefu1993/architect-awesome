@@ -28,7 +28,7 @@ public class BracketsIsValid {
             if(rc == null){
                 stack.add(c);
             }else {
-                Character poll = stack.pollLast();
+                Character poll = stack.poll();
                 if(poll != rc){
                     return false;
                 }
