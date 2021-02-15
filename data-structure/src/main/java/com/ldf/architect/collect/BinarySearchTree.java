@@ -25,6 +25,8 @@ public class BinarySearchTree {
         StringBuilder s = new StringBuilder();
         dept(tree, s);
         System.out.println(s);
+
+
     }
 
     /**
