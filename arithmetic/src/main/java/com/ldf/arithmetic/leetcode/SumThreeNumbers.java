@@ -1,9 +1,6 @@
 package com.ldf.arithmetic.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author lidefu
@@ -26,9 +23,37 @@ public class SumThreeNumbers {
 
     public static void main(String[] args) {
         SumThreeNumbers numbers = new SumThreeNumbers();
-        int[] nums = {1,-1,-1,0};
-        System.out.println(numbers.threeSum(nums).toString());
+        int[] nums = {1,2,-2,-1};
+        System.out.println(numbers.threeSumHash(nums).toString());
     }
+
+    public List<List<Integer>> threeSumHash(int[] nums){
+        List<List<Integer>> res = new ArrayList<>();
+        if(nums.length<3){
+            return res;
+        }
+        Arrays.sort(nums);
+        for (int i=0; i<nums.length-1; i++){
+            //去重
+            if(i>0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            Map<Integer, Integer> map = new HashMap<>();
+            for(int j=i+1; j<nums.length; j++){
+                if(map.containsKey(nums[j])){
+                    if(map.get(nums[j])==0){
+                        res.add(Arrays.asList(nums[i], nums[j], -nums[j]-nums[i]));
+                        //去重
+                        map.put(nums[j], -1);
+                    }
+                }else {
+                    map.put(-nums[i]-nums[j], 0);
+                }
+            }
+        }
+        return res;
+    }
+
 
     /**
      * 确定左边界 移动中间和右边界

@@ -1,4 +1,4 @@
-package com.ldf.architect.collect;
+package com.ldf.architect.tree;
 
 public class AvlTree<AnyType extends Comparable<? super AnyType>>
 {

@@ -1,4 +1,4 @@
-package com.ldf.architect.collect;
+package com.ldf.architect.tree;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

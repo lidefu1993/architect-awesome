@@ -47,7 +47,7 @@ public class SumOfTwoNumbers {
         for(int i = 0; i < nums.length; i++){
             int j = target - nums[i];
             Integer integer = map.get(j);
-            if(map.containsKey(j) && integer != i){
+            if(integer != null && integer != i){
                 return new int[]{i, integer};
             }
         }
